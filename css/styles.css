@@ -1,0 +1,30 @@
+html{
+    background-color: ivory;
+    max-height: 100%;
+}
+
+.navbutton{
+    font-size: 1rem;
+    font-family: Josefin Sans;
+}
+
+.navbox{
+    background-color: rgb(0, 247, 255);
+    border-radius: 10px;
+}
+
+.dash-head{
+    font-size: 3rem;
+    font-family: Josefin Sans;
+}
+
+.orders-box{
+    height: 60%;
+    font-family: Josefin Sans;
+    background-color: rgba(255, 210, 152, 0.548);
+    border-radius: 10px;
+}
+
+.form-row{
+    margin-left: 150px;
+}
