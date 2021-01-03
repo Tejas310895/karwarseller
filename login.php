@@ -11,11 +11,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Seller Login</title>
     <!-- bootstrap link -->
-    <link rel="stylesheet" href="../styles/bootstrap.min.css" >
-    <link rel="stylesheet" href="../styles/bootstrap.css" >
+    <link rel="stylesheet" href="styles/bootstrap.min.css" >
+    <link rel="stylesheet" href="styles/bootstrap.css" >
     <!-- bootstrap link -->
-    <link rel="stylesheet" href="../styles/jquery-ui.css">
-    <script type="text/javascript" src="../js/jquery-3.5.1.js"></script>
+    <link rel="stylesheet" href="styles/jquery-ui.css">
+    <script type="text/javascript" src="js/jquery-3.5.1.js"></script>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.js"></script>
     <link rel="stylesheet" href="css/styles.css">
@@ -300,7 +300,7 @@
 
             <!-- Icon -->
             <div class="fadeIn first">
-            <img src="../admin_area/admin_images/karwarslogo.png" id="icon" alt="User Icon" />
+            <img src="images/karwarslogo.png" id="icon" alt="User Icon" />
             <h3>SELLER PANEL</h3>
             </div>
 
@@ -321,8 +321,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="../js/bootstrap.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/bootstrap.min.js"></script>
 </body>
 </html>
 

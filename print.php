@@ -168,7 +168,7 @@ $del_charges = $row_min['del_charges'];
 <div class="pagebreak mt-1 ml-1">
   <div id="invoice-POS">
   <center>
-  <img src="../admin_area/admin_images/karlogob.png" alt="" width="120px">
+  <img src="images/karlogob.png" alt="" width="120px">
   </center>
     <!-- <center id="top">
       <div class="logo">
@@ -326,7 +326,7 @@ $del_charges = $row_min['del_charges'];
   <div class="pagebreak mt-1 ml-1">
   <div id="invoice-POS">
   <center>
-  <img src="../admin_area/admin_images/karlogob.png" alt="" width="80px" style="margin-top:10px;">
+  <img src="images/karlogob.png" alt="" width="80px" style="margin-top:10px;">
   </center>
     <!-- <center id="top">
       <div class="logo">
