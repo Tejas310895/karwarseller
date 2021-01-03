@@ -322,8 +322,129 @@ $del_charges = $row_min['del_charges'];
 				</div><!--End InvoiceBot-->
   </div><!--End Invoice-->
   </div>
+</body>
+</html>
 
-  <div class="pagebreak mt-1 ml-1">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href='https://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet'>
+    <style>
+            body{
+                font-family:Josefin Sans;
+            }
+            #invoice-POS h1 {
+            font-size: 1.5em;
+            color: #222;
+            }
+            #invoice-POS h2 {
+            font-size: 1rem;
+            }
+            #invoice-POS h3 {
+            font-size: 1.2em;
+            font-weight: 300;
+            line-height: 2em;
+            }
+            #invoice-POS p {
+            font-size: 0.8em;
+            color: #000;
+            line-height: 1em;
+            }
+            #invoice-POS #top, #invoice-POS #mid, #invoice-POS #bot {
+            /* Targets all id with 'col-' */
+            border-bottom: 1px solid #EEE;
+            }
+            #invoice-POS #top {
+            min-height: 100px;
+            }
+            #invoice-POS #mid {
+            min-height: 80px;
+            }
+            #invoice-POS #bot {
+            min-height: 50px;
+            }
+            /* #invoice-POS #top .logo {
+            height: 60px;
+            width: 60px;
+            background: url(../admin_area/admin_images/karlogob.png) no-repeat;
+            background-size: 60px 60px;
+            } */
+            #invoice-POS .clientlogo {
+            float: left;
+            height: 60px;
+            width: 60px;
+            background: url(../admin_area/admin_images/karlogob.png) no-repeat;
+            background-size: 60px 60px;
+            border-radius: 50px;
+            }
+            #invoice-POS .info {
+            display: block;
+            margin-left: 0;
+            text-align:center;
+            font-weight:bold;
+            font-size: 1rem;
+            }
+            #invoice-POS .title {
+            float: right;
+            }
+            #invoice-POS .title p {
+            text-align: right;
+            }
+            #invoice-POS table {
+            width: 100%;
+            border-collapse: collapse;
+            }
+            #invoice-POS .tabletitle {
+            font-size: 1rem;
+            /* background: #EEE; */
+            }
+            #invoice-POS .service {
+            border-bottom: 1px solid #EEE;
+            font-size: 1rem;
+            color:#000;
+            }
+            #invoice-POS .item {
+            width: 24mm;
+            }
+            #invoice-POS .itemtext {
+            /* font-size: 0.5em; */
+            }
+            #invoice-POS #legalcopy {
+            margin-top: 5mm;
+            }
+            #legal{
+                font-size:1rem !important;
+            }
+
+            #item_type{
+              text-align:left !important;
+            }
+            @media print 
+                        {
+                        /* @page
+                        {
+                            size: 100mm 100mm;
+                            /* size: portrait; */
+                            /* margin: 2mm 0mm 0mm 0mm; */
+                        /* } */
+                        .pagebreak { page-break-before: always; }
+                        }
+    </style>
+    <script>
+        window.onload = function () {
+            window.print();
+        }
+
+        window.onafterprint = function(){
+            window.close();
+        }
+    </script>
+</head>
+<body>
+<div class="pagebreak mt-1 ml-1">
   <div id="invoice-POS">
   <center>
   <img src="images/karlogob.png" alt="" width="120px">
@@ -480,6 +601,128 @@ $del_charges = $row_min['del_charges'];
 				</div><!--End InvoiceBot-->
   </div><!--End Invoice-->
   </div>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href='https://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet'>
+    <style>
+            body{
+                font-family:Josefin Sans;
+            }
+            #invoice-POS h1 {
+            font-size: 1.5em;
+            color: #222;
+            }
+            #invoice-POS h2 {
+            font-size: 1rem;
+            }
+            #invoice-POS h3 {
+            font-size: 1.2em;
+            font-weight: 300;
+            line-height: 2em;
+            }
+            #invoice-POS p {
+            font-size: 0.8em;
+            color: #000;
+            line-height: 1em;
+            }
+            #invoice-POS #top, #invoice-POS #mid, #invoice-POS #bot {
+            /* Targets all id with 'col-' */
+            border-bottom: 1px solid #EEE;
+            }
+            #invoice-POS #top {
+            min-height: 100px;
+            }
+            #invoice-POS #mid {
+            min-height: 80px;
+            }
+            #invoice-POS #bot {
+            min-height: 50px;
+            }
+            /* #invoice-POS #top .logo {
+            height: 60px;
+            width: 60px;
+            background: url(../admin_area/admin_images/karlogob.png) no-repeat;
+            background-size: 60px 60px;
+            } */
+            #invoice-POS .clientlogo {
+            float: left;
+            height: 60px;
+            width: 60px;
+            background: url(../admin_area/admin_images/karlogob.png) no-repeat;
+            background-size: 60px 60px;
+            border-radius: 50px;
+            }
+            #invoice-POS .info {
+            display: block;
+            margin-left: 0;
+            text-align:center;
+            font-weight:bold;
+            font-size: 1rem;
+            }
+            #invoice-POS .title {
+            float: right;
+            }
+            #invoice-POS .title p {
+            text-align: right;
+            }
+            #invoice-POS table {
+            width: 100%;
+            border-collapse: collapse;
+            }
+            #invoice-POS .tabletitle {
+            font-size: 1rem;
+            /* background: #EEE; */
+            }
+            #invoice-POS .service {
+            border-bottom: 1px solid #EEE;
+            font-size: 1rem;
+            color:#000;
+            }
+            #invoice-POS .item {
+            width: 24mm;
+            }
+            #invoice-POS .itemtext {
+            /* font-size: 0.5em; */
+            }
+            #invoice-POS #legalcopy {
+            margin-top: 5mm;
+            }
+            #legal{
+                font-size:1rem !important;
+            }
+
+            #item_type{
+              text-align:left !important;
+            }
+            @media print 
+                        {
+                        /* @page
+                        {
+                            size: 100mm 100mm;
+                            /* size: portrait; */
+                            /* margin: 2mm 0mm 0mm 0mm; */
+                        /* } */
+                        .pagebreak { page-break-before: always; }
+                        }
+    </style>
+    <script>
+        window.onload = function () {
+            window.print();
+        }
+
+        window.onafterprint = function(){
+            window.close();
+        }
+    </script>
+</head>
+<body>
 
   <div class="pagebreak mt-1 ml-1">
   <div id="invoice-POS">
