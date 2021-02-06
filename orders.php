@@ -82,15 +82,15 @@
                     </h6>
                 </div>
                 <div class="card-body">
-                    <a href="process_order.php?update_order=<?php echo $invoice_id;?>&status=Packed" class="btn btn-success pull-right mx-1" onclick="return confirm('Are you sure?')">
+                    <a href="process_order.php?update_order=<?php echo $invoice_id;?>&status=Packed" class="btn btn-success pull-right" onclick="return confirm('Are you sure?')" style="padding: 11px 21px;">
                     <i class="now-ui-icons shopping_basket"></i>
                     Packed
                     </a>
-                    <a href="<?php if($client_id==1){ echo "main_print.php";}else{echo "vendor_print.php";}?>?print=<?php echo $invoice_id; ?>&vendor_id=<?php echo $client_id; ?>" target="_blank" class="btn btn-info pull-right mx-1">
+                    <a href="<?php if($client_id==1){ echo "main_print.php";}else{echo "vendor_print.php";}?>?print=<?php echo $invoice_id; ?>&vendor_id=<?php echo $client_id; ?>" target="_blank" class="btn btn-info pull-right" style="padding: 11px 21px;">
                     <i class="now-ui-icons files_paper"></i>
                     Print
                     </a>
-                    <button id="show_details" class="btn btn-danger pull-right mx-1" data-toggle="modal" data-target="#cK<?php echo $invoice_id; ?>">
+                    <button id="show_details" class="btn btn-danger pull-right" data-toggle="modal" data-target="#cK<?php echo $invoice_id; ?>" style="padding: 11px 21px;">
                     <i class="now-ui-icons travel_info"></i>
                     View
                     </button>
