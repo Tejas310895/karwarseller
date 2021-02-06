@@ -86,7 +86,7 @@
                   <?php if($order_total>0){echo $order_total;}else{ echo 0;} ?>
                 </td>
                 <td>
-                    <button id="show_details" class="btn btn-danger pull-right mx-1" data-toggle="modal" data-target="#cK<?php echo $invoice_no; ?>">
+                    <button id="show_details" class="btn btn-danger mx-1" data-toggle="modal" data-target="#cK<?php echo $invoice_no; ?>">
                     <i class="now-ui-icons travel_info"></i>
                     View
                     </button>
@@ -104,8 +104,7 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th class="text-center">IMAGE</th>
-                                        <th class="text-center">ITEMS</th>
+                                       <th class="text-center">ITEMS</th>
                                         <th class="text-center">QTY</th>
                                         <th class="text-right">PRICE</th>
                                         <!-- <th class="text-right">Status</th> -->
@@ -162,9 +161,6 @@
 
                                 ?>
                                     <tr>
-                                        <td class="text-center">
-                                        <img src="<?php echo $pro_img1; ?>" alt="" class="img-thumbnail border-0" width="60px">
-                                        </td>
                                         <td class="text-center"><?php echo $pro_title; ?><br><?php echo $pro_desc; ?></td>
                                         <td class="text-center"><?php echo $qty; ?> x ₹ <?php echo $pro_price; ?></td>
                                         <td class="text-right"><?php if($pro_status==="Deliver"){echo "₹".$sub_total;}else{echo "Cancelled";} ?></td>
@@ -190,7 +186,7 @@
                             </div>
                         </div>
                         </div>
-                        <a href="<?php if($client_id==1){ echo "main_print.php";}else{echo "vendor_print.php";}?>?print=<?php echo $invoice_no; ?>&vendor_id=<?php echo $client_id; ?>" target="_blank" class="btn btn-info pull-right mx-1 mt-1">
+                        <a href="<?php if($client_id==1){ echo "main_print.php";}else{echo "vendor_print.php";}?>?print=<?php echo $invoice_no; ?>&vendor_id=<?php echo $client_id; ?>" target="_blank" class="btn btn-info mx-1 mt-1">
                         <i class="now-ui-icons files_paper"></i>
                         Print
                         </a>
