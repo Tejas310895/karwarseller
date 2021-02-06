@@ -346,7 +346,7 @@
 
             echo "<script>alert('Logged in. Welcome Back')</script>";
 
-            echo "<script>window.open('index.php','_self')</script>";
+            echo "<script>window.open('index.php?orders','_self')</script>";
 
         }else{
 
