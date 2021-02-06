@@ -118,9 +118,7 @@
                                 $get_pro_id = "select * from customer_orders where invoice_no='$invoice_no' and client_id='$client_id'";
 
                                 $run_pro_id = mysqli_query($con,$get_pro_id);
-
-                                $counter = 0;
-                      
+                     
                                 while($row_pro_id = mysqli_fetch_array($run_pro_id)){
 
                                 $pro_id = $row_pro_id['pro_id'];
