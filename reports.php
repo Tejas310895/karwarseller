@@ -16,6 +16,19 @@
 
     $total_purchase = $row_total_purchase['total_purchase'];
 
+    $get_bill_invoice = "select distinct(invoice_no) from customer_orders where CAST(del_date as DATE)='$delivery_date' and order_status='Delivered'";
+    $run_bill_invoice = mysqli_query($con,$get_bill_invoice);
+    $bill_diff_total = 0;
+    while($row_bill_invoice=mysqli_fetch_array($run_bill_invoice)){
+      $diff_invoice_no = $row_bill_invoice['invoice_no'];
+
+      $get_bill_diff = "select * from bill_controller where invoice_no='$diff_invoice_no' and client_id='$client_id'";
+      $run_bill_diff = mysqli_query($con,$get_bill_diff);
+      $row_bill_diff = mysqli_fetch_array($run_bill_diff);
+
+      $bill_diff_amount = $row_bill_diff['bill_amount'];
+      $bill_diff_total += $bill_diff_amount;
+    }
 
   ?>
   <div id="accordion">
@@ -25,6 +38,8 @@
         <button class="btn btn-link btn-block" data-toggle="collapse" data-target="#collapse<?php echo $counter; ?>" aria-expanded="true" aria-controls="collapseOne">
           <h6 class="mb-0">Order Report <br><?php echo $display_delivery_date; ?></h6>
           <h6 class="mb-0"><small>( Total Amount ₹<?php if($total_purchase>0){echo $total_purchase;}else{ echo 0;} ?>/- )</small></h6>
+          <h6 class="mb-0"><small>( Additional Amount ₹<?php if($bill_diff_total>0){echo $bill_diff_total;}else{ echo 0;} ?>/- )</small></h6>
+          <h6 class="mb-0"><small>( Grand Total ₹<?php if($total_purchase>0){echo $total_purchase+$bill_diff_total;}else{ echo 0;} ?>/- )</small></h6>
           <i class="now-ui-icons arrows-1_minimal-down"></i>
         </button>
       </h5>
@@ -45,6 +60,9 @@
               </th>
               <th>
                 Amount
+              </th>
+              <th>
+                Diff Amount
               </th>
               <th>
                 Action
@@ -71,6 +89,12 @@
 
                   $order_total = $row_order_total['order_total'];
 
+                  $get_bill_diff_client = "select * from bill_controller where invoice_no='$invoice_no' and client_id='$client_id'";
+                  $run_bill_diff_client = mysqli_query($con,$get_bill_diff_client);
+                  $row_bill_diff_client = mysqli_fetch_array($run_bill_diff_client);
+
+                  $bill_amount_client = $row_bill_diff_client['bill_amount'];
+
               ?>
               <tr>
                 <td>
@@ -84,6 +108,9 @@
                 </td>
                 <td>
                   <?php if($order_total>0){echo $order_total;}else{ echo 0;} ?>
+                </td>
+                <td>
+                  <?php if($bill_amount_client>0){echo $bill_amount_client;}else{ echo 0;} ?>
                 </td>
                 <td>
                     <button id="show_details" class="btn btn-danger mx-1" data-toggle="modal" data-target="#cK<?php echo $invoice_no; ?>">
