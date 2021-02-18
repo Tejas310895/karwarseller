@@ -51,6 +51,13 @@ $row_del_charges = mysqli_fetch_array($run_del_charges);
 
 $del_charges = $row_del_charges['del_charges'];
 
+$get_discount = "select * from customer_discounts where invoice_no='$invoice_no'";
+$run_discount = mysqli_query($con,$get_discount);
+$row_discount = mysqli_fetch_array($run_discount);
+
+$discount_type = $row_discount['discount_type'];
+$discount_amount = $row_discount['discount_amount'];
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -321,10 +328,17 @@ $del_charges = $row_del_charges['del_charges'];
 								<td class="payment"><h2><?php echo $del_charges; ?>.00</h2></td>
 							</tr>
               <?php } ?>
+              <?php if($discount_amount>0){?>
+              <tr class="tabletitle">
+              <td></td>
+              <td class="text-right"><h2><?php echo $discount_type; ?><h2></td>
+              <td><h2>-<?php echo $discount_amount; ?><h2></td>
+              </tr>
+              <?php } ?>
 							<tr class="tabletitle">
 								<td></td>
 								<td class="Rate"><h2>Grand Total</h2></td>
-								<td class="payment"><h2><?php echo $total+$del_charges; ?>.00</h2></td>
+								<td class="payment"><h2><?php echo ($total+$del_charges)-$discount_amount; ?>.00</h2></td>
 							</tr>
 
 						</table>
@@ -477,11 +491,24 @@ $del_charges = $row_del_charges['del_charges'];
 								<td class="Rate"><h2>Item Total</h2></td>
 								<td class="payment"><h2><?php echo $total; ?>.00</h2></td>
 							</tr>
-
+              <?php if($del_charges>0){?>
+							<tr class="tabletitle">
+								<td></td>
+								<td class="Rate"><h2>Delivery Charges</h2></td>
+								<td class="payment"><h2><?php echo $del_charges; ?>.00</h2></td>
+							</tr>
+              <?php } ?>
+              <?php if($discount_amount>0){?>
+              <tr class="tabletitle">
+              <td></td>
+              <td class="text-right"><h2><?php echo $discount_type; ?><h2></td>
+              <td><h2>-<?php echo $discount_amount; ?><h2></td>
+              </tr>
+              <?php } ?>
 							<tr class="tabletitle">
 								<td></td>
 								<td class="Rate"><h2>Grand Total</h2></td>
-								<td class="payment"><h2><?php echo $total+$del_charges; ?>.00</h2></td>
+								<td class="payment"><h2><?php echo ($total+$del_charges)-$discount_amount; ?>.00</h2></td>
 							</tr>
 
 						</table>
