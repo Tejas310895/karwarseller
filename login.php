@@ -29,12 +29,6 @@
     
         /* BASIC */
 
-        html {
-            background-image: url("https://images.pexels.com/photos/3687999/pexels-photo-3687999.jpeg");
-            background-position: center;
-            background-size: cover;
-        }
-
         body {
         font-family: "Poppins", sans-serif;
         height: 100vh;
