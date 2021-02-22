@@ -3809,7 +3809,7 @@ Created using IcoMoon - icomoon.io
 .wrapper {
   position: relative;
   top: 0;
-  height: 100vh;
+  /* height: 100vh; */
 }
 
 .wrapper.wrapper-full-page {
