@@ -33,7 +33,7 @@ if(isset($_POST["limit"], $_POST["start"])){
 
   $counter = ++$counter;
   
-  $get_total_purchase = "select sum(due_amount) as total_purchase from customer_orders where CAST(del_date as DATE)='$delivery_date' and client_id='$client_id' and order_status='Delivered' and product_status='Deliver'";
+  $get_total_purchase = "select sum(vendor_due_amount) as total_purchase from customer_orders where CAST(del_date as DATE)='$delivery_date' and client_id='$client_id' and order_status='Delivered' and product_status='Deliver'";
   $run_total_purchase = mysqli_query($con,$get_total_purchase);
   $row_total_purchase = mysqli_fetch_array($run_total_purchase);
 
@@ -106,7 +106,7 @@ if(isset($_POST["limit"], $_POST["start"])){
                 $row_customer = mysqli_fetch_array($run_customer);
                 $customer_name = $row_customer['customer_name'];
 
-                $get_order_total = "select sum(due_amount) as order_total from customer_orders where invoice_no='$invoice_no' and client_id='$client_id' and product_status='Deliver'";
+                $get_order_total = "select sum(vendor_due_amount) as order_total from customer_orders where invoice_no='$invoice_no' and client_id='$client_id' and product_status='Deliver'";
                 $run_order_total = mysqli_query($con,$get_order_total);
                 $row_order_total = mysqli_fetch_array($run_order_total);
 
@@ -174,7 +174,7 @@ if(isset($_POST["limit"], $_POST["start"])){
 
                               $qty = $row_pro_id['qty'];
 
-                              $sub_total = $row_pro_id['due_amount'];
+                              $sub_total = $row_pro_id['vendor_due_amount'];
 
                               $client_id = $row_pro_id['client_id'];
 
@@ -224,7 +224,7 @@ if(isset($_POST["limit"], $_POST["start"])){
                               <button type="button" class="btn btn-primary text-left" data-dismiss="modal">Close</button>
                               <?php 
                               
-                              $get_total = "select sum(due_amount) as total from customer_orders where invoice_no='$invoice_no' and client_id='$client_id' and product_status='Deliver'";
+                              $get_total = "select sum(vendor_due_amount) as total from customer_orders where invoice_no='$invoice_no' and client_id='$client_id' and product_status='Deliver'";
                               $run_total = mysqli_query($con,$get_total);
                               $row_total = mysqli_fetch_array($run_total);
 
