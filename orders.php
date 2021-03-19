@@ -31,7 +31,7 @@
 
         $order_status = $row_orders['order_status'];
 
-        $get_total = "SELECT sum(due_amount) AS total FROM customer_orders WHERE invoice_no='$invoice_id' and product_status='Deliver'";
+        $get_total = "SELECT sum(due_amount) AS total FROM customer_orders WHERE invoice_no='$invoice_id' and client_id='$client_id' and product_status='Deliver'";
 
         $run_total = mysqli_query($con,$get_total);
 
