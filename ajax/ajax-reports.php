@@ -130,10 +130,10 @@ if(isset($_POST["limit"], $_POST["start"])){
                 <?php echo $customer_name; ?>
               </td>
               <td>
-                <?php if($order_total>0){echo $order_total;}else{ echo 0;} ?>
+                <?php if($order_total>0){echo round($order_total, 2);}else{ echo 0;} ?>
               </td>
               <td>
-                <?php if($bill_amount_client>0){echo $bill_amount_client;}else{ echo 0;} ?>
+                <?php if($bill_amount_client>0){echo round($bill_amount_client, 2);}else{ echo 0;} ?>
               </td>
               <td>
                   <button id="show_details" class="btn btn-danger mx-1" data-toggle="modal" data-target="#cK<?php echo $invoice_no; ?>">
