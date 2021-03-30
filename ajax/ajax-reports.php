@@ -60,9 +60,9 @@ if(isset($_POST["limit"], $_POST["start"])){
     <h5 class="mb-0 text-center">
       <button class="btn btn-link btn-block" data-toggle="collapse" data-target="#collapse<?php echo $counter; ?>" aria-expanded="true" aria-controls="collapseOne">
         <h6 class="mb-0">Order Report <br><?php echo $display_delivery_date; ?></h6>
-        <h6 class="mb-0"><small>( Total Amount ₹<?php if($total_purchase>0){echo $total_purchase;}else{ echo 0;} ?>/- )</small></h6>
+        <h6 class="mb-0"><small>( Total Amount ₹<?php if($total_purchase>0){echo round($total_purchase, 2);}else{ echo 0;} ?>/- )</small></h6>
         <h6 class="mb-0"><small>( Additional Amount ₹<?php if($bill_diff_total>0){echo $bill_diff_total;}else{ echo 0;} ?>/- )</small></h6>
-        <h6 class="mb-0"><small>( Grand Total ₹<?php if($total_purchase>0){echo $total_purchase+$bill_diff_total;}else{ echo 0;} ?>/- )</small></h6>
+        <h6 class="mb-0"><small>( Grand Total ₹<?php if($total_purchase>0){echo round(($total_purchase+$bill_diff_total), 2);}else{ echo 0;} ?>/- )</small></h6>
         <i class="now-ui-icons arrows-1_minimal-down"></i>
       </button>
     </h5>
@@ -212,7 +212,7 @@ if(isset($_POST["limit"], $_POST["start"])){
                               ?>
                                   <tr>
                                       <td class="text-center"><?php echo $pro_title; ?><br><?php echo $pro_desc; ?></td>
-                                      <td class="text-center"><?php echo $qty; ?> x ₹ <?php echo $pro_price; ?></td>
+                                      <td class="text-center"><?php echo $qty; ?> x ₹ <?php echo round($pro_price, 2); ?></td>
                                       <td class="text-right"><?php if($pro_status==="Deliver"){echo "₹".$sub_total;}else{echo "Cancelled";} ?></td>
                                       <!-- <td class="text-right"><?php //echo $pro_status; ?></td> -->
                                   </tr>
@@ -231,7 +231,7 @@ if(isset($_POST["limit"], $_POST["start"])){
                               $total = $row_total['total'];
                               
                               ?>
-                              <h3 class="card-title">Total - ₹ <?php echo $total; ?>/-</h3>
+                              <h3 class="card-title">Total - ₹ <?php echo round($total, 2); ?>/-</h3>
                           </div>
                           </div>
                       </div>
