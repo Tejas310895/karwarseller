@@ -126,7 +126,7 @@
 
                     <?php
                     
-                    $get_pro_id = "select * from customer_orders where invoice_no='$invoice_id' and client_id='$client_id'";
+                    $get_pro_id = "select * from customer_orders where invoice_no='$invoice_id' and client_id='$client_id' and product_status='Deliver'";
 
                     $run_pro_id = mysqli_query($con,$get_pro_id);
 
