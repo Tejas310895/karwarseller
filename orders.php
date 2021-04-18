@@ -200,8 +200,8 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary text-left" data-dismiss="modal">Close</button>
-                    <h3 class="card-title">MRP - ₹ <?php echo $total; ?>/-</h3>
-                    <h3 class="card-title">SELL PRICE - ₹ <?php echo $vendor_total; ?>/-</h3>
+                    <h5 class="card-title">MRP - ₹ <?php echo $total; ?>/-</h5>
+                    <h5 class="card-title">SELL PRICE - ₹ <?php echo round($vendor_total, 2); ?>/-</h5>
                 </div>
                 </div>
             </div>
