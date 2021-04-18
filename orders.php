@@ -39,6 +39,14 @@
 
         $total = $row_total['total'];
 
+        $get_vendor_total = "SELECT sum(vendor_due_amount) AS vendor_total FROM customer_orders WHERE invoice_no='$invoice_id' and client_id='$client_id' and product_status='Deliver'";
+
+        $run_vendor_total = mysqli_query($con,$get_vendor_total);
+
+        $row_vendor_total = mysqli_fetch_array($run_vendor_total);
+
+        $vendor_total = $row_vendor_total['vendor_total'];
+
         $get_customer = "select * from customers where customer_id='$c_id'";
 
         $run_customer = mysqli_query($con,$get_customer);
@@ -118,7 +126,8 @@
                             <th class="text-center">IMAGE</th>
                             <th class="text-center">ITEMS</th>
                             <th class="text-center">QTY</th>
-                            <th class="text-right">PRICE</th>
+                            <th class="text-right">MRP</th>
+                            <th class="text-right">SELL PRICE</th>
                             <!-- <th class="text-right">Status</th> -->
                         </tr>
                     </thead>
@@ -139,6 +148,8 @@
                     $qty = $row_pro_id['qty'];
 
                     $sub_total = $row_pro_id['due_amount'];
+
+                    $vendor_sub_total = $row_pro_id['vendor_due_amount'];
 
                     $client_id = $row_pro_id['client_id'];
 
@@ -178,8 +189,9 @@
                             <img src="<?php echo $pro_img1; ?>" alt="" class="img-thumbnail border-0" width="60px">
                             </td>
                             <td class="text-center"><?php echo $pro_title; ?><br><?php echo $pro_desc; ?></td>
-                            <td class="text-center"><?php echo $qty; ?> x ₹ <?php echo $pro_price; ?></td>
+                            <td class="text-center"><?php echo $qty; ?></td>
                             <td class="text-right">₹ <?php echo $sub_total; ?></td>
+                            <td class="text-right">₹ <?php echo $vendor_sub_total; ?></td>
                             <!-- <td class="text-right"><?php //echo $pro_status; ?></td> -->
                         </tr>
                         <?php } ?>
@@ -188,7 +200,8 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary text-left" data-dismiss="modal">Close</button>
-                    <h3 class="card-title">Total - ₹ <?php echo $total; ?>/-</h3>
+                    <h3 class="card-title">MRP - ₹ <?php echo $total; ?>/-</h3>
+                    <h3 class="card-title">SELL PRICE - ₹ <?php echo $vendor_total; ?>/-</h3>
                 </div>
                 </div>
             </div>
