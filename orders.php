@@ -199,9 +199,15 @@
                 </table>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary text-left" data-dismiss="modal">Close</button>
-                    <h5 class="card-title">MRP - ₹ <?php echo $total; ?>/-</h5>
-                    <h5 class="card-title">SELL PRICE - ₹ <?php echo round($vendor_total, 2); ?>/-</h5>
+                    <div class="row">
+                        <div class="col-6">
+                            <button type="button" class="btn btn-primary text-left" data-dismiss="modal">Close</button>
+                        </div>
+                        <div class="col-6">
+                            <h5 class="card-title">MRP - ₹ <?php echo $total; ?>/-</h5>
+                            <h5 class="card-title">SELL PRICE - ₹ <?php echo round($vendor_total, 2); ?>/-</h5>
+                        </div>
+                    </div>     
                 </div>
                 </div>
             </div>
