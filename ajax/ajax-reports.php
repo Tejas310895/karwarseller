@@ -39,7 +39,7 @@ if(isset($_POST["limit"], $_POST["start"])){
 
   $total_purchase = $row_total_purchase['total_purchase'];
 
-  $get_vendor_total_purchase = "select sum(vendor_due_amount) as total_purchase from customer_orders where CAST(del_date as DATE)='$delivery_date' and client_id='$client_id' and order_status='Delivered' and product_status='Deliver'";
+  $get_vendor_total_purchase = "select sum(vendor_due_amount) as vendor_total_purchase from customer_orders where CAST(del_date as DATE)='$delivery_date' and client_id='$client_id' and order_status='Delivered' and product_status='Deliver'";
   $run_vendor_total_purchase = mysqli_query($con,$get_vendor_total_purchase);
   $row_vendor_total_purchase = mysqli_fetch_array($run_vendor_total_purchase);
 
