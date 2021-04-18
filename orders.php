@@ -204,7 +204,7 @@
                             <button type="button" class="btn btn-primary pull-left" data-dismiss="modal">Close</button>
                         </div>
                         <div class="col-9">
-                            <h5 class="card-title">MRP - ₹ <?php echo $total; ?>/-</h5>
+                            <h5 class="card-title mb-1">MRP - ₹ <?php echo $total; ?>/-</h5>
                             <h5 class="card-title">SELL PRICE - ₹ <?php echo round($vendor_total, 2); ?>/-</h5>
                         </div>
                     </div>     
