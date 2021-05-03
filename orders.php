@@ -102,6 +102,10 @@
                     <i class="now-ui-icons files_paper"></i>
                     Print
                     </a>
+                    <a class="<?php if($client_id==1){ echo "show";}else{echo "d-none";}?>"href="ref_bill.php?print=<?php echo $invoice_id; ?>&vendor_id=<?php echo $client_id; ?>" target="_blank" class="btn btn-info pull-right" style="padding: 11px 21px;">
+                    <i class="now-ui-icons files_paper"></i>
+                    KOT
+                    </a>
                     <button id="show_details" class="btn btn-danger pull-right" data-toggle="modal" data-target="#cK<?php echo $invoice_id; ?>" style="padding: 11px 21px;">
                     <i class="now-ui-icons travel_info"></i>
                     View
