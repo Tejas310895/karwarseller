@@ -119,7 +119,6 @@ if(isset($_GET['print'])){
 				<th style="width:5%;">Sl.No</th>
 				<th style="width:60%;">ITEM</th>
 				<th style="width:5%;">QUANTITY</th>
-				<th style="width:15%;">SAVING</th>
 				<th style="width:15%;">TOTAL</th>
 			</thead>
 			<tbody>
@@ -182,7 +181,6 @@ if(isset($_GET['print'])){
 						<td class='text-center'>$counter</td>
 						<td>$pro_title $pro_desc</td>
 						<td class='text-center'>$qty</td>
-						<td class='text-center'>$discount.00</td>
 						<td class='text-center'>$sub_total.00</td>
 						</tr>
 						";	
@@ -195,7 +193,7 @@ if(isset($_GET['print'])){
 						<td class='text-center'>$counter</td>
 						<td>$pro_title $pro_desc</td>
 						<td class='text-center'>$qty</td>
-						<td class='text-center' colspan='2'><strong>Undelivered</strong></td>
+						<td class='text-center'><strong>Undelivered</strong></td>
 						</tr>
 						";	
 
@@ -205,12 +203,6 @@ if(isset($_GET['print'])){
 
 				}
 				?>		
-			</tbody>
-			<tbody>
-				<tr style="border-top:3px solid #000;">
-				    <th colspan="4" class="text-right">GRAND TOTAL :</th>
-					<th class="text-center">Rs. <?php echo $total; ?>.00</th>	
-				</tr>
 			</tbody>
 		</table>
 	</div>
