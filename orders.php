@@ -85,7 +85,7 @@
                     <h5 class="card-category">Order Id - <?php echo $invoice_id; ?></h5>
                     <h5 class="card-category">Date - <?php echo date('d/M/Y @ h:i:s a',strtotime($order_date)); ?></h5>
                     <h4 class="card-title">Name - <?php echo $c_name; ?></h4>
-                    <!-- <h6 class="card-title">Mobile - +91 <?php //echo $c_contact; ?></h6> -->
+                    <h6 class="card-title">Mobile - +91 <?php echo $c_contact; ?></h6>
                     <h6 class="card-title">Address - 
                     <?php echo $customer_address; ?>, 
                     <?php echo $customer_phase; ?>, 
