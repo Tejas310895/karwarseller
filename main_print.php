@@ -2,7 +2,7 @@
 
 include("includes/db.php");
 
-if(isset($_GET['print'])){
+if(isset($_GET['demo'])){
   $invoice_no = $_GET['print'];
   $vendor_id = $_GET['vendor_id'];
   date_default_timezone_set('Asia/Kolkata');
