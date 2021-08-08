@@ -1,11 +1,8 @@
 <div class="row">
 <?php 
 
-    if($client_id==1){
-        $get_invoice = "SELECT DISTINCT invoice_no FROM customer_orders WHERE order_status in ('Order Placed') ORDER BY order_id DESC";
-    }else{
-        $get_invoice = "SELECT DISTINCT invoice_no FROM customer_orders WHERE order_status in ('Order Placed') and client_id='$client_id' ORDER BY order_id DESC";
-    }
+    $get_invoice = "SELECT DISTINCT invoice_no FROM customer_orders WHERE order_status in ('Order Placed') and client_id='$client_id' ORDER BY order_id DESC";
+
     
     $run_invoice = mysqli_query($con,$get_invoice);
 
