@@ -1,7 +1,12 @@
 <div class="row">
 <?php 
 
+if ($client_id==6) {
+    $get_invoice = "SELECT DISTINCT invoice_no FROM customer_orders WHERE order_status in ('Order Placed') ORDER BY order_id DESC";
+}else{
     $get_invoice = "SELECT DISTINCT invoice_no FROM customer_orders WHERE order_status in ('Order Placed') and client_id='$client_id' ORDER BY order_id DESC";
+}
+
 
     
     $run_invoice = mysqli_query($con,$get_invoice);
@@ -28,7 +33,11 @@
 
         $order_status = $row_orders['order_status'];
 
-        $get_total = "SELECT sum(due_amount) AS total FROM customer_orders WHERE invoice_no='$invoice_id' and client_id='$client_id' and product_status='Deliver'";
+        if ($client_id==6) {
+            $get_total = "SELECT sum(due_amount) AS total FROM customer_orders WHERE invoice_no='$invoice_id' and product_status='Deliver'";
+        }else{
+            $get_total = "SELECT sum(due_amount) AS total FROM customer_orders WHERE invoice_no='$invoice_id' and client_id='$client_id' and product_status='Deliver'";
+        }        
 
         $run_total = mysqli_query($con,$get_total);
 
@@ -36,7 +45,11 @@
 
         $total = $row_total['total'];
 
-        $get_vendor_total = "SELECT sum(vendor_due_amount) AS vendor_total FROM customer_orders WHERE invoice_no='$invoice_id' and client_id='$client_id' and product_status='Deliver'";
+        if ($client_id==6) {
+            $get_vendor_total = "SELECT sum(vendor_due_amount) AS vendor_total FROM customer_orders WHERE invoice_no='$invoice_id' and product_status='Deliver'";
+        }else{
+            $get_vendor_total = "SELECT sum(vendor_due_amount) AS vendor_total FROM customer_orders WHERE invoice_no='$invoice_id' and client_id='$client_id' and product_status='Deliver'";
+        }        
 
         $run_vendor_total = mysqli_query($con,$get_vendor_total);
 
@@ -95,14 +108,14 @@
                     <i class="now-ui-icons shopping_basket"></i>
                     Packed
                     </a>
-                    <a href="<?php if($client_id==1){ echo "main_print.php";}else{echo "vendor_print.php";}?>?print=<?php echo $invoice_id; ?>&vendor_id=<?php echo $client_id; ?>" target="_blank" class="btn btn-info pull-right" style="padding: 11px 21px;">
+                    <a href="<?php if($client_id==6){ echo "main_print.php";}else{echo "vendor_print.php";}?>?print=<?php echo $invoice_id; ?>&vendor_id=<?php echo $client_id; ?>" target="_blank" class="btn btn-info pull-right" style="padding: 11px 21px;">
                     <i class="now-ui-icons files_paper"></i>
                     Print
                     </a>
-                    <!-- <a href="ref_bill.php?print=<?php //echo $invoice_id; ?>&vendor_id=<?php //echo $client_id; ?>" target="_blank" class="btn btn-info pull-right <?php //if($client_id==1){ echo "show";}else{echo "d-none";}?>" style="padding: 11px 21px;">
+                    <a href="ref_bill.php?print=<?php echo $invoice_id; ?>&vendor_id=<?php echo $client_id; ?>" target="_blank" class="btn btn-info pull-right <?php if($client_id==6){ echo "show";}else{echo "d-none";}?>" style="padding: 11px 21px;">
                     <i class="now-ui-icons files_paper"></i>
                     KOT
-                    </a> -->
+                    </a>
                     <button id="show_details" class="btn btn-danger pull-right" data-toggle="modal" data-target="#cK<?php echo $invoice_id; ?>" style="padding: 11px 21px;">
                     <i class="now-ui-icons travel_info"></i>
                     View
@@ -135,9 +148,13 @@
                     <tbody>
 
                     <?php
-                    
-                    $get_pro_id = "select * from customer_orders where invoice_no='$invoice_id' and client_id='$client_id' and product_status='Deliver'";
 
+                    if ($client_id==6) {
+                        $get_pro_id = "select * from customer_orders where invoice_no='$invoice_id' and product_status='Deliver'";
+                    }else{
+                        $get_pro_id = "select * from customer_orders where invoice_no='$invoice_id' and client_id='$client_id' and product_status='Deliver'";
+                    }        
+                    
                     $run_pro_id = mysqli_query($con,$get_pro_id);
 
                     $counter = 0;
@@ -152,7 +169,7 @@
 
                     $vendor_sub_total = $row_pro_id['vendor_due_amount'];
 
-                    $client_id = $row_pro_id['client_id'];
+                    // $client_id = $row_pro_id['client_id'];
 
                     $pro_price = $sub_total/$qty;                                  
 

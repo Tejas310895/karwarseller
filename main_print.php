@@ -4,7 +4,6 @@ include("includes/db.php");
 
 if(isset($_GET['print'])){
   $invoice_no = $_GET['print'];
-  $vendor_id = $_GET['vendor_id'];
   date_default_timezone_set('Asia/Kolkata');
 $today = date("Y-m-d H:i:s");
 
@@ -50,13 +49,6 @@ $run_del_charges = mysqli_query($con,$get_del_charges);
 $row_del_charges = mysqli_fetch_array($run_del_charges);
 
 $del_charges = $row_del_charges['del_charges'];
-
-$get_discount = "select * from customer_discounts where invoice_no='$invoice_no'";
-$run_discount = mysqli_query($con,$get_discount);
-$row_discount = mysqli_fetch_array($run_discount);
-
-$discount_type = $row_discount['discount_type'];
-$discount_amount = $row_discount['discount_amount'];
 
 ?>
 <!DOCTYPE html>
@@ -182,10 +174,10 @@ $discount_amount = $row_discount['discount_amount'];
     </script>
 </head>
 <body>
-  <div class="pagebreak mt-1 ml-1">
+<div class="pagebreak mt-1 ml-1">
   <div id="invoice-POS">
   <center>
-  <img src="images/karwarslogo.png" alt="" width="80px" style="margin-top:10px;">
+  <img src="admin_images/karwarslogo.png" alt="" width="120px">
   </center>
     <!-- <center id="top">
       <div class="logo">
@@ -193,10 +185,11 @@ $discount_amount = $row_discount['discount_amount'];
     </center> -->
     <div id="mid">
       <div class="info">
-        <h2>VENDOR STATEMENT</h2>
+        <h2>ORDER STATEMENT</h2>
         <h2>Order id : <?php echo $invoice_no; ?> </br>
             Date : <?php echo date('d/M/Y h:i a',strtotime($order_date)); ?> </br>
-            Name :<?php echo $customer_name; ?> </br>
+            Name : <?php echo $customer_name; ?></br>
+            Phone   : <?php echo $customer_contact; ?></br>
             Address : <?php echo $customer_address.",".$customer_phase.",".$customer_landmark.",".$customer_city; ?></br>
         </h2>
       </div>
@@ -207,99 +200,178 @@ $discount_amount = $row_discount['discount_amount'];
 					<div id="table">
 						<table>
 							<tr class="tabletitle">
-								<td class="item"><h2 class="mb-0">Item</h2></td>
-								<td class="Hours"><h2 class="mb-0">Qty</h2></td>
-								<td class="Rate"><h2 class="mb-0">Sub Total</h2></td>
+								<td class="item"><h2 class="my-0">Item</h2></td>
+								<td class="Hours"><h2 class="my-0">Qty</h2></td>
+								<td class="Rate"><h2 class="my-0">Sub Total</h2></td>
 							</tr>
-              <?php
+      <?php 
 
-                $get_pro_id = "select * from customer_orders where invoice_no='$invoice_no' and client_id='$vendor_id'";
+        $get_client_id = "SELECT distinct(client_id) from customer_orders where invoice_no='$invoice_no'";
+        $run_client_id = mysqli_query($con,$get_client_id);
+        while($row_client_id=mysqli_fetch_array($run_client_id)){
+
+            $client_id = $row_client_id['client_id'];
+
+            $get_product_type = "select * from clients where client_id='$client_id'";
+            $run_product_type = mysqli_query($con,$get_product_type);
+            $row_product_type = mysqli_fetch_array($run_product_type);
+
+            $product_type = $row_product_type['client_pro_type'];
+            
+            // echo"
+            // <tr>
+            // <th colspan='3' class='item_type' style='font-size:0.6rem;text-align:left;padding:10px 10px 0px 10px;text-transform: uppercase;background-color:#F0F0F0;'>$product_type</th>
+            // </tr>
+            // ";
+       ?>
+        <tbody class="text-center" style="font-weight:bold;">
+      <?php
+				$get_pro_id = "select * from customer_orders where invoice_no='$invoice_no' and client_id='$client_id'";
 
                 $run_pro_id = mysqli_query($con,$get_pro_id);
-
-                $counter = 0;
                 
-                $get_sum = "select SUM(due_amount) as order_total from customer_orders where invoice_no='$invoice_no' and client_id='$vendor_id' and product_status='Deliver'";
-                $run_sum = mysqli_query($con,$get_sum);
-                $row_sum = mysqli_fetch_array($run_sum);
-                $order_total = $row_sum['order_total'];
 
-                while($row_pro_id = mysqli_fetch_array($run_pro_id)){
-                  
-                $pro_id = $row_pro_id['pro_id'];
+				$counter = 0;
+                $you_saved = 0;
 
-                $qty = $row_pro_id['qty'];
+				while($row_pro_id = mysqli_fetch_array($run_pro_id)){
+					
+				$pro_id = $row_pro_id['pro_id'];
 
-                $product_status = $row_pro_id['product_status'];
+				$qty = $row_pro_id['qty'];
 
-                $sub_total = $row_pro_id['due_amount'];
+				$product_status = $row_pro_id['product_status'];
 
-                $pro_price = $sub_total/$qty;  
+				$sub_total = $row_pro_id['due_amount'];
 
-                $get_pro = "select * from products where product_id='$pro_id'";
+				$pro_price = $sub_total/$qty;
 
-                $run_pro = mysqli_query($con,$get_pro);
+				$get_pro = "select * from products where product_id='$pro_id'";
 
-                while($row_pro = mysqli_fetch_array($run_pro)){
+				$run_pro = mysqli_query($con,$get_pro);
 
-                  // $total =0;
+				while($row_pro = mysqli_fetch_array($run_pro)){
 
-                  $pro_title = $row_pro['product_title'];
+					// $total =0;
 
-                  $pro_desc = $row_pro['product_desc'];
+					$pro_title = $row_pro['product_title'];
 
-                  // $pro_price = $row_pro['product_price'];
+					$pro_desc = $row_pro['product_desc'];
 
-                  $mrp = $row_pro['price_display'];
+					// $pro_price = $row_pro['product_price'];
 
-                  if($mrp<=0){
+					$mrp = $row_pro['price_display'];
 
-                    $discount=0;
+					if($mrp<$pro_price){
 
-                  }else{
+						$discount=0;
 
-                    $discount=($mrp-$pro_price)*$qty;
-                  } 
+					}else{
 
-                  // $sub_total = $row_pro['product_price']*$qty;
-                  
-                  // $total += $sub_total;
+						$discount=($mrp-$pro_price)*$qty;
+					} 
 
-                  $counter = ++$counter;
+					//$sub_total = $row_pro['product_price']*$qty;
+					
+					//$total += $sub_total;
 
-                  if($product_status==='Deliver'){
+                    $counter = ++$counter;
+                    $you_saved += $discount;
 
-                    echo "
+					if($product_status==='Deliver'){
+
+            echo "
             
-                    <tr class='service'>
-                      <td class='tableitem'><p class='itemtext'>$pro_title $pro_desc</p></td>
-                      <td class='tableitem'><p class='itemtext'>$qty</p></td>
-                      <td class='tableitem'><p class='itemtext'>$sub_total.00</p></td>
-                    </tr>
-                  
-                  ";
-      
-                }else {
-      
-                  echo "
-                    <tr class='service'>
-                      <td class='tableitem'><p class='itemtext'>$pro_title $pro_desc</p></td>
-                      <td class='tableitem'><p class='itemtext'>$qty</p></td>
-                      <td class='tableitem'><p class='itemtext'>Cancelled</p></td>
-                    </tr>
-                  ";	
+              <tr class='service'>
+								<td class='tableitem'><p class='itemtext'>$pro_title $pro_desc</p></td>
+								<td class='tableitem'><p class='itemtext'>$qty</p></td>
+								<td class='tableitem'><p class='itemtext'>$sub_total.00</p></td>
+							</tr>
+            
+            ";
 
-                  }
+					}else {
 
-                  }
+						echo "
+              <tr class='service'>
+								<td class='tableitem'><p class='itemtext'>$pro_title $pro_desc</p></td>
+								<td class='tableitem'><p class='itemtext'>$qty</p></td>
+								<td class='tableitem'><p class='itemtext'>Cancelled</p></td>
+							</tr>
+						";	
+
+					}
+
+					}
 
                 }
-              ?>
+			?>
+      <?php } ?>
+            <?php 
+                
+                $get_discount = "select * from customer_discounts where invoice_no='$invoice_no'";
+                $run_discount = mysqli_query($con,$get_discount);
+                $row_discount = mysqli_fetch_array($run_discount);
 
+                $coupon_code = $row_discount['coupon_code'];
+                $discount_type = $row_discount['discount_type'];
+                $discount_amount = $row_discount['discount_amount'];
+
+                if($discount_type==='amount'){
+                    $grand_total = ($total+$del_charges)-$discount_amount;
+                }elseif (empty($discount_type)) {
+                    $grand_total = $total+$del_charges;
+                }elseif ($discount_type==='product') {
+                    $get_promo_pro = "select * from products where product_id='$discount_amount'";
+                    $run_promo_pro = mysqli_query($con,$get_promo_pro);
+                    $row_promo_pro = mysqli_fetch_array($run_promo_pro);
+    
+                    $promo_pro_title = $row_promo_pro['product_title'];
+                    $promo_pro_desc = $row_promo_pro['product_desc'];
+                    $promo_pro_price = $row_promo_pro['product_price']; 
+                    $grand_total = ($total+$del_charges)+$promo_pro_price;
+            ?>
+
+                            <tr>
+                                <th colspan='3' class='item_type' style='font-size:0.6rem;text-align:left;padding:10px 10px 0px 10px;text-transform: uppercase;background-color:#F0F0F0;'>Promo Products</th>
+                            </tr>
+                            <tr>
+                                <td class='tableitem' colspan="2"><p class='itemtext'><?php echo $promo_pro_title." ".$promo_pro_desc;?></p></td>
+								<td class='tableitem'><p class='itemtext'><?php echo $promo_pro_price;?></p></td>
+                            </tr>
+            <?php } ?>
 							<tr class="tabletitle">
 								<td></td>
-								<td class="Rate"><h2>Total</h2></td>
-								<td class="payment"><h2><?php echo $order_total; ?></h2></td>
+								<td class="Rate"><h2>Item Total</h2></td>
+								<td class="payment"><h2><?php echo $total; ?>.00</h2></td>
+							</tr>
+              <?php if($del_charges>0){?>
+							<tr class="tabletitle">
+								<td></td>
+								<td class="Rate"><h2>Delivery Charges</h2></td>
+								<td class="payment"><h2><?php echo $del_charges; ?>.00</h2></td>
+							</tr>
+              <?php } ?>
+              <?php if(!empty($coupon_code)){?>
+              <tr class="tabletitle">
+              <td></td>
+              <?php if($discount_type==='amount'){ ?>
+              <td class="text-right"><h2>Promo (<?php echo strtoupper($coupon_code); ?>)<h2></td>
+              <td><h2>-<?php echo $discount_amount; ?><h2></td>
+              <?php }else{ ?>
+              <td class="text-left" colspan="2" style="text-align:left;">
+                <h2>
+                    Promo (<?php echo strtoupper($coupon_code); ?>) <br>
+                    Offer Product Added to Order.
+                <h2>
+              </td>
+              </tr>
+              <?php } ?>
+              <?php } ?>
+							<tr class="tabletitle">
+								<td></td>
+								<td class="Rate"><h2>Grand Total</h2></td>
+								<td class="payment"><h2><?php echo $grand_total; ?>.00</h2></td>
 							</tr>
 
 						</table>

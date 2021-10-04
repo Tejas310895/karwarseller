@@ -2,7 +2,7 @@
 
 include("includes/db.php");
 
-if(isset($_GET['demo'])){
+if(isset($_GET['print'])){
   $invoice_no = $_GET['print'];
   $vendor_id = $_GET['vendor_id'];
   date_default_timezone_set('Asia/Kolkata');
@@ -206,6 +206,26 @@ $discount_amount = $row_discount['discount_amount'];
 
 					<div id="table">
 						<table>
+            <?php 
+                  
+                  $get_client = "select distinct(client_id) from customer_orders where invoice_no='$invoice_no'";
+                  $run_client = mysqli_query($con,$get_client);
+                  while ($row_client=mysqli_fetch_array($run_client)) {
+                    
+                    $client_id = $row_client['client_id'];
+
+                    $get_client_name = "select * from clients where client_id='$client_id'";
+                    $run_client_name = mysqli_query($con,$get_client_name);
+                    $row_client = mysqli_fetch_array($run_client_name);
+
+                    $client_shop = $row_client['client_shop'];
+                  ?>
+
+            <tr>
+                <th colspan="3" class="my-4">
+                  <?php echo $client_shop; ?>
+                </th>
+              </tr>
 							<tr class="tabletitle">
 								<td class="item"><h2 class="mb-0">Item</h2></td>
 								<td class="Hours"><h2 class="mb-0">Qty</h2></td>
@@ -213,13 +233,13 @@ $discount_amount = $row_discount['discount_amount'];
 							</tr>
               <?php
 
-                $get_pro_id = "select * from customer_orders where invoice_no='$invoice_no' and client_id='$vendor_id'";
+                $get_pro_id = "select * from customer_orders where invoice_no='$invoice_no' and client_id='$client_id'";
 
                 $run_pro_id = mysqli_query($con,$get_pro_id);
 
                 $counter = 0;
                 
-                $get_sum = "select SUM(due_amount) as order_total from customer_orders where invoice_no='$invoice_no' and client_id='$vendor_id' and product_status='Deliver'";
+                $get_sum = "select SUM(due_amount) as order_total from customer_orders where invoice_no='$invoice_no' and product_status='Deliver'";
                 $run_sum = mysqli_query($con,$get_sum);
                 $row_sum = mysqli_fetch_array($run_sum);
                 $order_total = $row_sum['order_total'];
@@ -294,8 +314,8 @@ $discount_amount = $row_discount['discount_amount'];
                   }
 
                 }
+              }
               ?>
-
 							<tr class="tabletitle">
 								<td></td>
 								<td class="Rate"><h2>Total</h2></td>
