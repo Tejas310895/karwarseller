@@ -108,7 +108,7 @@ if ($client_id==6) {
                     <i class="now-ui-icons shopping_basket"></i>
                     Packed
                     </a>
-                    <a href="<?php if($client_id==6){ echo "main_print.php";}else{echo "vendor_print.php";}?>?print=<?php echo $invoice_id; ?>&vendor_id=<?php echo $client_id; ?>" target="_blank" class="btn btn-info pull-right" style="padding: 11px 21px;">
+                    <a href="<?php if($client_id==6){ echo "main_print.php";}else{echo "vendor_print.php";}?>?print=<?php echo $invoice_id; ?>&vendor_id=<?php echo $client_id; ?>" class="btn btn-info pull-right" style="padding: 11px 21px;">
                     <i class="now-ui-icons files_paper"></i>
                     Print
                     </a>
