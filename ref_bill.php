@@ -177,7 +177,7 @@ $discount_amount = $row_discount['discount_amount'];
         }
 
         window.onafterprint = function(){
-          window.history.back();
+          window.history.go(-1);
         }
     </script>
 </head>
