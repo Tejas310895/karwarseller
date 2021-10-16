@@ -112,7 +112,7 @@ if ($client_id==6) {
                     <i class="now-ui-icons files_paper"></i>
                     Print
                     </a>
-                    <a href="ref_bill.php?print=<?php echo $invoice_id; ?>&vendor_id=<?php echo $client_id; ?>" target="_blank" class="btn btn-info pull-right <?php if($client_id==6){ echo "show";}else{echo "d-none";}?>" style="padding: 11px 21px;">
+                    <a href="ref_bill.php?print=<?php echo $invoice_id; ?>&vendor_id=<?php echo $client_id; ?>" class="btn btn-info pull-right <?php if($client_id==6){ echo "show";}else{echo "d-none";}?>" style="padding: 11px 21px;">
                     <i class="now-ui-icons files_paper"></i>
                     KOT
                     </a>
