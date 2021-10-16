@@ -177,7 +177,7 @@ $del_charges = $row_del_charges['del_charges'];
 <div class="pagebreak mt-1 ml-1">
   <div id="invoice-POS">
   <center>
-  <img src="admin_images/karwarslogo.png" alt="" width="120px">
+  <img src="images/karwarslogo.png" alt="" width="80px" style="margin-top:10px;">
   </center>
     <!-- <center id="top">
       <div class="logo">

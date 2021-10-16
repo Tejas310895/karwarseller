@@ -184,9 +184,9 @@ $discount_amount = $row_discount['discount_amount'];
 <body>
   <div class="pagebreak mt-1 ml-1">
   <div id="invoice-POS">
-  <center>
+  <!-- <center>
   <img src="images/karwarslogo.png" alt="" width="80px" style="margin-top:10px;">
-  </center>
+  </center> -->
     <!-- <center id="top">
       <div class="logo">
       </div>
