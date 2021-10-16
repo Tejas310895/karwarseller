@@ -112,10 +112,10 @@ if ($client_id==6) {
                     <i class="now-ui-icons files_paper"></i>
                     Print
                     </a>
-                    <a href="window.open('https://seller.karwars.in/ref_bill.php?print=<?php echo $invoice_id; ?>&vendor_id=<?php echo $client_id; ?>')" onclick="window.open(this.href); return false;" class="btn btn-info pull-right <?php if($client_id==6){ echo "show";}else{echo "d-none";}?>" style="padding: 11px 21px;">
+                    <button onclick="window.open('https://seller.karwars.in/ref_bill.php?print=<?php echo $invoice_id; ?>&vendor_id=<?php echo $client_id; ?>')" class="btn btn-info pull-right <?php if($client_id==6){ echo "show";}else{echo "d-none";}?>" style="padding: 11px 21px;">
                     <i class="now-ui-icons files_paper"></i>
                     KOT
-                    </a>
+                    </button>
                     <button id="show_details" class="btn btn-danger pull-right" data-toggle="modal" data-target="#cK<?php echo $invoice_id; ?>" style="padding: 11px 21px;">
                     <i class="now-ui-icons travel_info"></i>
                     View
