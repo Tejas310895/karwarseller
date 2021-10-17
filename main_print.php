@@ -349,31 +349,31 @@ $del_charges = $row_del_charges['del_charges'];
             </tr>
             <?php } ?>
               <tr class="tabletitle">
-								<td class="Rate mb-0" colspan="4"><h2 style="text-align:right;margin-bottom:0;margin-top:0;">Item Count :</h2></td>
-								<td class="payment"><h2 style="text-align:right;margin-bottom:0;margin-top:0;"><?php echo array_sum($total_qty); ?></h2></td>
+								<td class="Rate mb-0" colspan="4"><h2 style="text-align:right;margin-bottom:0;margin-top:0;font-size:0.7rem;">Item Count :</h2></td>
+								<td class="payment"><h2 style="text-align:right;margin-bottom:0;margin-top:0;font-size:0.7rem;"><?php echo array_sum($total_qty); ?></h2></td>
 							</tr>
 							<tr class="tabletitle">
-								<td class="Rate" colspan="4"><h2 style="text-align:right;margin-bottom:0;margin-top:0;">Item Taxable Value : ₹</h2></td>
-								<td class="payment"><h2 style="text-align:right;margin-bottom:0;margin-top:0;"><?php echo number_format(round(array_sum($taxable_value),2),2); ?></h2></td>
+								<td class="Rate" colspan="4"><h2 style="text-align:right;margin-bottom:0;margin-top:0;font-size:0.7rem;">Item Taxable Value : ₹</h2></td>
+								<td class="payment"><h2 style="text-align:right;margin-bottom:0;margin-top:0;font-size:0.7rem;"><?php echo number_format(round(array_sum($taxable_value),2),2); ?></h2></td>
 							</tr>
               <tr class="tabletitle">
-								<td class="Rate" colspan="4"><h2 style="text-align:right;margin-bottom:0;margin-top:0;">Total Tax : ₹</h2></td>
-								<td class="payment"><h2 style="text-align:right;margin-bottom:0;margin-top:0;"><?php echo number_format(round(array_sum($total_tax),2),2); ?></h2></td>
+								<td class="Rate" colspan="4"><h2 style="text-align:right;margin-bottom:0;margin-top:0;font-size:0.7rem;">Total Tax : ₹</h2></td>
+								<td class="payment"><h2 style="text-align:right;margin-bottom:0;margin-top:0;font-size:0.7rem;"><?php echo number_format(round(array_sum($total_tax),2),2); ?></h2></td>
 							</tr>
               <?php if($del_charges>0){?>
                 <tr class="tabletitle">
-                  <td class="Rate" colspan="4"><h2 style="text-align:right;margin-bottom:0;margin-top:0;">Delivery Charges : ₹</h2></td>
-                  <td class="payment"><h2 style="text-align:right;margin-bottom:0;margin-top:0;"><?php echo number_format($del_charges,2); ?></h2></td>
+                  <td class="Rate" colspan="4"><h2 style="text-align:right;margin-bottom:0;margin-top:0;font-size:0.7rem;">Delivery Charges : ₹</h2></td>
+                  <td class="payment"><h2 style="text-align:right;margin-bottom:0;margin-top:0;font-size:0.7rem;"><?php echo number_format($del_charges,2); ?></h2></td>
                 </tr>
               <?php } ?>
               <?php if(!empty($coupon_code)){?>
               <tr class="tabletitle">
               <?php if($discount_type==='amount'){ ?>
-              <td class="text-right" colspan="5" style="text-align:center;"><h2 style="text-align:center;">Promo Applied (<?php echo strtoupper($coupon_code); ?>)<h2></td>
+              <td class="text-right" colspan="5" style="text-align:center;"><h2 style="text-align:center;font-size:0.7rem;">Promo Applied (<?php echo strtoupper($coupon_code); ?>)<h2></td>
               </tr>
               <tr class="tabletitle">
-              <td colspan="4" style="text-align:right;">Discount (<?php echo strtoupper($coupon_code); ?>):₹ </td>
-              <td><h2 style="text-align:right;">-<?php echo $discount_amount; ?></h2></td>
+              <td colspan="4" style="text-align:right;font-size:0.7rem;">Discount (<?php echo strtoupper($coupon_code); ?>):₹ </td>
+              <td><h2 style="text-align:right;font-size:0.7rem;">-<?php echo $discount_amount; ?></h2></td>
               <?php }else{ ?>
               <td class="text-left" colspan="5" style="text-align:left;">
                 <h2>
@@ -390,7 +390,7 @@ $del_charges = $row_del_charges['del_charges'];
 
 						</table>
 					</div><!--End Table-->
-                <h3 style="margin-top: 0;margin-bottom:0;text-align:right;font-weight:bold;">You Save :₹ <?php echo $you_saved; ?></h3>
+                <h3 style="margin-top: 0;margin-bottom:0;text-align:right;font-weight:bold;font-size:0.7rem;">You Save :₹ <?php echo $you_saved; ?></h3>
 					<div id="legalcopy">
 						<p class="legal" style="text-align: center;font-weight:bold;font-size:1rem;margin-top:0;margin-bottom:0;"><strong>Thank You!</strong> <br> Order Again www.karwars.in.
 						</p>
