@@ -370,13 +370,12 @@ $del_charges = $row_del_charges['del_charges'];
               <tr class="tabletitle">
               <td></td>
               <?php if($discount_type==='amount'){ ?>
-              <td class="text-right"><h2>Promo (<?php echo strtoupper($coupon_code); ?>)<h2></td>
+              <td class="text-right"><h2>Promo Applied (<?php echo strtoupper($coupon_code); ?>)<h2></td>
               <td><h2>-<?php echo $discount_amount; ?><h2></td>
               <?php }else{ ?>
               <td class="text-left" colspan="2" style="text-align:left;">
                 <h2>
-                    Promo (<?php echo strtoupper($coupon_code); ?>) <br>
-                    Offer Product Added to Order.
+                    Promo Applied (<?php echo strtoupper($coupon_code); ?>).
                 <h2>
               </td>
               </tr>
