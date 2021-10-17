@@ -156,12 +156,12 @@ $del_charges = $row_del_charges['del_charges'];
             }
             @media print 
                         {
-                        /* @page
+                        @page
                         {
-                            size: 100mm 100mm;
+                            size: 80mm 80mm;
                             /* size: portrait; */
                             /* margin: 2mm 0mm 0mm 0mm; */
-                        /* } */
+                        /* }
                         .pagebreak { page-break-before: always; }
                         }
     </style>
