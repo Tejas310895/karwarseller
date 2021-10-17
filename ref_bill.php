@@ -168,16 +168,16 @@ $del_charges = $row_del_charges['del_charges'];
 <body>
 <div class="pagebreak mt-1 ml-1">
   <div id="invoice-POS">
-  <center>
+  <!-- <center>
   <img src="images/karwarslogo.png" alt="" width="80px" style="margin-top:10px;">
-  </center>
+  </center> -->
     <!-- <center id="top">
       <div class="logo">
       </div>
     </center> -->
     <div id="mid">
       <div class="info">
-        <h2 style="text-align:center;">Order Invoice</h2>
+        <h2 style="text-align:center;">Order KOT</h2>
         <h2>Order id : <?php echo $invoice_no; ?> </br>
             Date : <?php echo date('d/M/Y h:i a',strtotime($order_date)); ?> </br>
             Name : <?php echo $customer_name; ?></br>
@@ -389,7 +389,7 @@ $del_charges = $row_del_charges['del_charges'];
               <?php //} ?>
               <?php //} ?> -->
               <tr class="tabletitle">
-                <td class="Rate" colspan="2"><h2 style="text-align:right;margin-bottom:0;">Grand Total : ₹</h2></td>
+                <td class="Rate" colspan="2"><h2 style="text-align:left;margin-bottom:0;">Total :</h2></td>
                 <td class="payment"><h2 style="text-align:right;margin-bottom:0;"><?php echo number_format($grand_total,2); ?></h2></td>
               </tr>
 
