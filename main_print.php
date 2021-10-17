@@ -154,16 +154,6 @@ $del_charges = $row_del_charges['del_charges'];
             #item_type{
               text-align:left !important;
             }
-            @media print 
-                        {
-                        @page
-                        {
-                            size: 80mm 80mm;
-                            /* size: portrait; */
-                            /* margin: 2mm 0mm 0mm 0mm; */
-                        }
-                        /* .pagebreak { page-break-before: always; } */
-                        }
     </style>
     <script>
         window.onload = function () {
