@@ -57,10 +57,10 @@ $del_charges = $row_del_charges['del_charges'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link href='https://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Rationale' rel='stylesheet'>
     <style>
             body{
-                font-family:Josefin Sans;
+                font-family:Rationale;
             }
             #invoice-POS h1 {
             font-size: 1.5em;
@@ -70,6 +70,7 @@ $del_charges = $row_del_charges['del_charges'];
             font-size: 0.8rem;
             margin-top: 5px;
             margin-bottom: 5px;
+            text-align: left;
             }
             #invoice-POS h3 {
             font-size: 1.2em;
@@ -126,11 +127,12 @@ $del_charges = $row_del_charges['del_charges'];
             border-collapse: collapse;
             }
             #invoice-POS .tabletitle {
+              border-bottom: 1px solid #000;
             font-size: 1rem;
             /* background: #EEE; */
             }
             #invoice-POS .service {
-            border-bottom: 1px solid #EEE;
+            border-bottom: 1px solid #000;
             font-size: 1rem;
             color:#000;
             }
@@ -143,7 +145,7 @@ $del_charges = $row_del_charges['del_charges'];
             margin-bottom: 7px;
             }
             #invoice-POS #legalcopy {
-            margin-top: 5mm;
+            margin-top: 0;
             }
             #legal{
                 font-size:1rem !important;
@@ -185,7 +187,7 @@ $del_charges = $row_del_charges['del_charges'];
     </center> -->
     <div id="mid">
       <div class="info">
-        <h2>ORDER STATEMENT</h2>
+        <h2 style="text-align:center;">ORDER STATEMENT</h2>
         <h2>Order id : <?php echo $invoice_no; ?> </br>
             Date : <?php echo date('d/M/Y h:i a',strtotime($order_date)); ?> </br>
             Name : <?php echo $customer_name; ?></br>
@@ -195,19 +197,25 @@ $del_charges = $row_del_charges['del_charges'];
       </div>
     </div><!--End Invoice Mid-->
     
-    <div id="bot" style="text-align:center;">
+    <div id="bot">
 
 					<div id="table">
 						<table>
 							<tr class="tabletitle">
-								<td class="item"><h2 class="my-0">Item</h2></td>
-								<td class="Hours"><h2 class="my-0">Qty</h2></td>
-								<td class="Rate"><h2 class="my-0">Sub Total</h2></td>
+								<th class="item"><h2 class="my-0">Item</h2></th>
+								<th class="Hours" style="width:5%;"><h2 class="my-0" style="text-align: left;">Qty</h2></th>
+                <th class="Rate"><h2 class="my-0" style="text-align: center;">Taxable</h2></th>
+                <th class="Rate"><h2 class="my-0" style="text-align: center;">Tax</h2></th>
+								<th class="Rate"><h2 class="my-0" style="text-align: right;">Total</h2></th>
 							</tr>
       <?php 
 
         $get_client_id = "SELECT distinct(client_id) from customer_orders where invoice_no='$invoice_no'";
         $run_client_id = mysqli_query($con,$get_client_id);
+        $taxable_value = array();
+        $total_tax = array();
+        $total_qty = array();
+        $you_saved = 0;
         while($row_client_id=mysqli_fetch_array($run_client_id)){
 
             $client_id = $row_client_id['client_id'];
@@ -232,13 +240,14 @@ $del_charges = $row_del_charges['del_charges'];
                 
 
 				$counter = 0;
-                $you_saved = 0;
 
 				while($row_pro_id = mysqli_fetch_array($run_pro_id)){
 					
 				$pro_id = $row_pro_id['pro_id'];
 
 				$qty = $row_pro_id['qty'];
+
+        array_push($total_qty,$qty);
 
 				$product_status = $row_pro_id['product_status'];
 
@@ -262,6 +271,14 @@ $del_charges = $row_del_charges['del_charges'];
 
 					$mrp = $row_pro['price_display'];
 
+          $product_gst_rate = $row_pro['product_gst_rate'];
+
+          $tax = round($sub_total*($product_gst_rate/100),2);
+
+          $taxable = round($sub_total-($sub_total*($product_gst_rate/100)),2);
+
+          array_push($taxable_value,$taxable);
+          array_push($total_tax,$tax);
 					if($mrp<$pro_price){
 
 						$discount=0;
@@ -280,12 +297,13 @@ $del_charges = $row_del_charges['del_charges'];
 
 					if($product_status==='Deliver'){
 
-            echo "
-            
+            echo "            
               <tr class='service'>
 								<td class='tableitem'><p class='itemtext'>$pro_title $pro_desc</p></td>
-								<td class='tableitem'><p class='itemtext'>$qty</p></td>
-								<td class='tableitem'><p class='itemtext'>$sub_total.00</p></td>
+								<td class='tableitem' style='padding-left: 5px;'><p class='itemtext' style='text-align: left;'>$qty</p></td>
+								<td class='tableitem'><p class='itemtext' style='text-align: center;'>$taxable</p></td>
+                <td class='tableitem'><p class='itemtext' style='text-align: center;'>$tax</br>@$product_gst_rate%</p></td>
+                <td class='tableitem'><p class='itemtext' style='text-align: right;'>$sub_total.00</p></td>
 							</tr>
             
             ";
@@ -295,7 +313,7 @@ $del_charges = $row_del_charges['del_charges'];
 						echo "
               <tr class='service'>
 								<td class='tableitem'><p class='itemtext'>$pro_title $pro_desc</p></td>
-								<td class='tableitem'><p class='itemtext'>$qty</p></td>
+								<td class='tableitem'><p class='itemtext' style='text-align: center;'>$qty</p></td>
 								<td class='tableitem'><p class='itemtext'>Cancelled</p></td>
 							</tr>
 						";	
@@ -332,25 +350,31 @@ $del_charges = $row_del_charges['del_charges'];
                     $grand_total = ($total+$del_charges)+$promo_pro_price;
             ?>
 
-                            <tr>
-                                <th colspan='3' class='item_type' style='font-size:0.6rem;text-align:left;padding:10px 10px 0px 10px;text-transform: uppercase;background-color:#F0F0F0;'>Promo Products</th>
-                            </tr>
-                            <tr>
-                                <td class='tableitem' colspan="2"><p class='itemtext'><?php echo $promo_pro_title." ".$promo_pro_desc;?></p></td>
+            <tr>
+                <th colspan='3' class='item_type' style='font-size:0.6rem;text-align:left;padding:10px 10px 0px 10px;text-transform: uppercase;background-color:#F0F0F0;'>Promo Products</th>
+            </tr>
+            <tr>
+                <td class='tableitem' colspan="2"><p class='itemtext'><?php echo $promo_pro_title." ".$promo_pro_desc;?></p></td>
 								<td class='tableitem'><p class='itemtext'><?php echo $promo_pro_price;?></p></td>
-                            </tr>
+            </tr>
             <?php } ?>
+              <tr class="tabletitle">
+								<td class="Rate mb-0" colspan="4"><h2 style="text-align:right;margin-bottom:0;margin-top:0;">Item Count :</h2></td>
+								<td class="payment"><h2 style="text-align:right;margin-bottom:0;margin-top:0;"><?php echo array_sum($total_qty); ?></h2></td>
+							</tr>
 							<tr class="tabletitle">
-								<td></td>
-								<td class="Rate"><h2>Item Total</h2></td>
-								<td class="payment"><h2><?php echo $total; ?>.00</h2></td>
+								<td class="Rate" colspan="4"><h2 style="text-align:right;margin-bottom:0;margin-top:0;">Item Taxable Value : ₹</h2></td>
+								<td class="payment"><h2 style="text-align:right;margin-bottom:0;margin-top:0;"><?php echo number_format(round(array_sum($taxable_value),2),2); ?></h2></td>
+							</tr>
+              <tr class="tabletitle">
+								<td class="Rate" colspan="4"><h2 style="text-align:right;margin-bottom:0;margin-top:0;">Total Tax : ₹</h2></td>
+								<td class="payment"><h2 style="text-align:right;margin-bottom:0;margin-top:0;"><?php echo number_format(round(array_sum($total_tax),2),2); ?></h2></td>
 							</tr>
               <?php if($del_charges>0){?>
-							<tr class="tabletitle">
-								<td></td>
-								<td class="Rate"><h2>Delivery Charges</h2></td>
-								<td class="payment"><h2><?php echo $del_charges; ?>.00</h2></td>
-							</tr>
+                <tr class="tabletitle">
+                  <td class="Rate" colspan="4"><h2 style="text-align:right;margin-bottom:0;margin-top:0;">Delivery Charges : ₹</h2></td>
+                  <td class="payment"><h2 style="text-align:right;margin-bottom:0;margin-top:0;"><?php echo number_format($del_charges,2); ?></h2></td>
+                </tr>
               <?php } ?>
               <?php if(!empty($coupon_code)){?>
               <tr class="tabletitle">
@@ -368,18 +392,20 @@ $del_charges = $row_del_charges['del_charges'];
               </tr>
               <?php } ?>
               <?php } ?>
-							<tr class="tabletitle">
-								<td></td>
-								<td class="Rate"><h2>Grand Total</h2></td>
-								<td class="payment"><h2><?php echo $grand_total; ?>.00</h2></td>
-							</tr>
+              <tr class="tabletitle">
+                <td class="Rate" colspan="4"><h2 style="text-align:right;margin-bottom:0;">Grand Total : ₹</h2></td>
+                <td class="payment"><h2 style="text-align:right;margin-bottom:0;"><?php echo number_format($grand_total,2); ?></h2></td>
+              </tr>
 
 						</table>
 					</div><!--End Table-->
-
+                <h3 style="margin-top: 0;margin-bottom:0;text-align:right;font-weight:bold;">You Save :₹ <?php echo $you_saved; ?></h3>
 					<div id="legalcopy">
-						<p class="legal"><strong>Thank You!</strong> <br> Order Again : www.karwars.in.
+						<p class="legal" style="text-align: center;font-weight:bold;font-size:1rem;margin-top:0;margin-bottom:0;"><strong>Thank You!</strong> <br> Order Again : www.karwars.in.
 						</p>
+            <center>
+            <img src="images/gplay.png" alt="" width="100px">
+            </center>
 					</div>
 
 				</div><!--End InvoiceBot-->
