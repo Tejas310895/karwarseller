@@ -57,10 +57,10 @@ $del_charges = $row_del_charges['del_charges'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link href='https://fonts.googleapis.com/css?family=Rationale' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Kelly+Slab' rel='stylesheet'>
     <style>
             body{
-                font-family:Rationale;
+                font-family:Kelly Slab;
             }
             #invoice-POS h1 {
             font-size: 1.5em;
