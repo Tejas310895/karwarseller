@@ -368,12 +368,14 @@ $del_charges = $row_del_charges['del_charges'];
               <?php } ?>
               <?php if(!empty($coupon_code)){?>
               <tr class="tabletitle">
-              <td></td>
               <?php if($discount_type==='amount'){ ?>
-              <td class="text-right"><h2>Promo Applied (<?php echo strtoupper($coupon_code); ?>)<h2></td>
-              <td><h2>-<?php echo $discount_amount; ?><h2></td>
+              <td class="text-right" colspan="5" style="text-align:center;"><h2 style="text-align:center;">Promo Applied (<?php echo strtoupper($coupon_code); ?>)<h2></td>
+              </tr>
+              <tr class="tabletitle">
+              <td colspan="4" style="text-align:right;">Discount (<?php echo strtoupper($coupon_code); ?>):₹ </td>
+              <td><h2 style="text-align:right;">-<?php echo $discount_amount; ?></h2></td>
               <?php }else{ ?>
-              <td class="text-left" colspan="2" style="text-align:left;">
+              <td class="text-left" colspan="4" style="text-align:left;">
                 <h2>
                     Promo Applied (<?php echo strtoupper($coupon_code); ?>).
                 <h2>
