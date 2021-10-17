@@ -304,7 +304,7 @@ $del_charges = $row_del_charges['del_charges'];
               <tr class='service'>
 								<td class='tableitem'><p class='itemtext'>$pro_title $pro_desc</p></td>
 								<td class='tableitem'><p class='itemtext' style='text-align: center;'>$qty</p></td>
-								<td class='tableitem'><p class='itemtext'>Cancelled</p></td>
+								<td class='tableitem' colspan='3'><p class='itemtext'>Cancelled</p></td>
 							</tr>
 						";	
 
@@ -344,7 +344,7 @@ $del_charges = $row_del_charges['del_charges'];
                 <th colspan='3' class='item_type' style='font-size:0.6rem;text-align:left;padding:10px 10px 0px 10px;text-transform: uppercase;background-color:#F0F0F0;'>Promo Products</th>
             </tr>
             <tr>
-                <td class='tableitem' colspan="2"><p class='itemtext'><?php echo $promo_pro_title." ".$promo_pro_desc;?></p></td>
+                <td class='tableitem' colspan="4"><p class='itemtext'><?php echo $promo_pro_title." ".$promo_pro_desc;?></p></td>
 								<td class='tableitem'><p class='itemtext'><?php echo $promo_pro_price;?></p></td>
             </tr>
             <?php } ?>
