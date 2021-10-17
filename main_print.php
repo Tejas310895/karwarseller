@@ -57,10 +57,10 @@ $del_charges = $row_del_charges['del_charges'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link href='https://fonts.googleapis.com/css?family=Kelly+Slab' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Mono' rel='stylesheet'>
     <style>
             body{
-                font-family:Kelly Slab;
+                font-family:Roboto Mono;
             }
             #invoice-POS h1 {
             font-size: 1.5em;
@@ -177,7 +177,7 @@ $del_charges = $row_del_charges['del_charges'];
     </center> -->
     <div id="mid">
       <div class="info">
-        <h2 style="text-align:center;">ORDER STATEMENT</h2>
+        <h2 style="text-align:center;">Order Invoice</h2>
         <h2>Order id : <?php echo $invoice_no; ?> </br>
             Date : <?php echo date('d/M/Y h:i a',strtotime($order_date)); ?> </br>
             Name : <?php echo $customer_name; ?></br>
@@ -391,7 +391,7 @@ $del_charges = $row_del_charges['del_charges'];
 					</div><!--End Table-->
                 <h3 style="margin-top: 0;margin-bottom:0;text-align:right;font-weight:bold;">You Save :₹ <?php echo $you_saved; ?></h3>
 					<div id="legalcopy">
-						<p class="legal" style="text-align: center;font-weight:bold;font-size:1rem;margin-top:0;margin-bottom:0;"><strong>Thank You!</strong> <br> Order Again : www.karwars.in.
+						<p class="legal" style="text-align: center;font-weight:bold;font-size:1rem;margin-top:0;margin-bottom:0;"><strong>Thank You!</strong> <br> Order Again www.karwars.in.
 						</p>
             <center>
             <img src="images/gplay.png" alt="" width="100px">
