@@ -161,8 +161,8 @@ $del_charges = $row_del_charges['del_charges'];
                             size: 80mm 80mm;
                             /* size: portrait; */
                             /* margin: 2mm 0mm 0mm 0mm; */
-                        /* }
-                        .pagebreak { page-break-before: always; }
+                        }
+                        /* .pagebreak { page-break-before: always; } */
                         }
     </style>
     <script>
