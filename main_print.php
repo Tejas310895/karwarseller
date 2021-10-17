@@ -375,7 +375,7 @@ $del_charges = $row_del_charges['del_charges'];
               <td colspan="4" style="text-align:right;">Discount (<?php echo strtoupper($coupon_code); ?>):₹ </td>
               <td><h2 style="text-align:right;">-<?php echo $discount_amount; ?></h2></td>
               <?php }else{ ?>
-              <td class="text-left" colspan="4" style="text-align:left;">
+              <td class="text-left" colspan="5" style="text-align:left;">
                 <h2>
                     Promo Applied (<?php echo strtoupper($coupon_code); ?>).
                 <h2>
