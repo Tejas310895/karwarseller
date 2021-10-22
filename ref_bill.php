@@ -397,7 +397,7 @@ $del_charges = $row_del_charges['del_charges'];
               <?php //} ?>
               <?php //} ?> -->
               <tr class="tabletitle">
-                <td class="Rate" colspan="2"><h2 style="text-align:left;margin-bottom:0;">Total :</h2></td>
+                <td class="Rate" colspan="4"><h2 style="text-align:left;margin-bottom:0;">Total :</h2></td>
                 <td class="payment"><h2 style="text-align:right;margin-bottom:0;"><?php echo number_format($grand_total,2); ?></h2></td>
               </tr>
 
