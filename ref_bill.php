@@ -224,7 +224,7 @@ $del_charges = $row_del_charges['del_charges'];
             
             echo"
             <tr>
-            <th colspan='2' class='item_type' style='font-size:0.6rem;text-align:left;padding:10px 10px 0px 10px;text-transform: uppercase;background-color:#F0F0F0;'>$product_type</th>
+            <th colspan='3' class='item_type' style='font-size:0.6rem;text-align:left;padding:10px 10px 0px 10px;text-transform: uppercase;background-color:#F0F0F0;'>$product_type</th>
             <th class='item_type' style='font-size:0.6rem;text-align:right;padding:10px 10px 0px 10px;text-transform: uppercase;background-color:#F0F0F0;'>$client_total</th>
             </tr>
             ";
