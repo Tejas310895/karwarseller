@@ -224,7 +224,7 @@ $del_charges = $row_del_charges['del_charges'];
             
             echo"
             <tr>
-            <th colspan='3' class='item_type' style='font-size:0.6rem;text-align:left;padding:10px 10px 0px 10px;text-transform: uppercase;background-color:#F0F0F0;'>$product_type</th>
+            <th colspan='4' class='item_type' style='font-size:0.6rem;text-align:left;padding:10px 10px 0px 10px;text-transform: uppercase;background-color:#F0F0F0;'>$product_type</th>
             <th class='item_type' style='font-size:0.6rem;text-align:right;padding:10px 10px 0px 10px;text-transform: uppercase;background-color:#F0F0F0;'>$client_total</th>
             </tr>
             ";
@@ -354,7 +354,7 @@ $del_charges = $row_del_charges['del_charges'];
             ?>
 
             <tr>
-                <th colspan='3' class='item_type' style='font-size:0.6rem;text-align:left;padding:10px 10px 0px 10px;text-transform: uppercase;background-color:#F0F0F0;'>Promo Products</th>
+                <th colspan='4' class='item_type' style='font-size:0.6rem;text-align:left;padding:10px 10px 0px 10px;text-transform: uppercase;background-color:#F0F0F0;'>Promo Products</th>
             </tr>
             <tr>
                 <td class='tableitem' colspan="4"><p class='itemtext'><?php echo $promo_pro_title." ".$promo_pro_desc;?></p></td>
