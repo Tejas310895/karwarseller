@@ -192,10 +192,10 @@ $del_charges = $row_del_charges['del_charges'];
 					<div id="table">
 						<table>
 							<tr class="tabletitle">
+                <th class="item"><h2 class="my-0">Rack</h2></th>
+                <th class="item"><h2 class="my-0">Shelf</h2></th>
 								<th class="item"><h2 class="my-0">Item</h2></th>
 								<th class="Hours" style="width:5%;"><h2 class="my-0" style="text-align: left;">Qty</h2></th>
-                <!-- <th class="Rate"><h2 class="my-0" style="text-align: center;">Taxable</h2></th>
-                <th class="Rate"><h2 class="my-0" style="text-align: center;">Tax</h2></th> -->
 								<th class="Rate"><h2 class="my-0" style="text-align: right;">Total</h2></th>
 							</tr>
       <?php 
@@ -264,6 +264,10 @@ $del_charges = $row_del_charges['del_charges'];
 
 					$pro_desc = $row_pro['product_desc'];
 
+          $rack_no = $row_pro['rack_no'];
+
+          $shelf_no = $row_pro['shelf_no'];
+
 					// $pro_price = $row_pro['product_price'];
 
 					$mrp = $row_pro['price_display'];
@@ -296,6 +300,8 @@ $del_charges = $row_del_charges['del_charges'];
 
             echo "            
               <tr class='service'>
+                <td class='tableitem'><p class='itemtext'>$rack_no</p></td>
+                <td class='tableitem'><p class='itemtext'>$shelf_no</p></td>
 								<td class='tableitem'><p class='itemtext'>$pro_title $pro_desc</p></td>
 								<td class='tableitem' style='padding-left: 5px;'><p class='itemtext' style='text-align: left;'>$qty</p></td>
                 <td class='tableitem'><p class='itemtext' style='text-align: right;'>$sub_total.00</p></td>
@@ -307,6 +313,8 @@ $del_charges = $row_del_charges['del_charges'];
 
 						echo "
               <tr class='service'>
+                <td class='tableitem'><p class='itemtext'>$rack_no</p></td>
+                <td class='tableitem'><p class='itemtext'>$shelf_no</p></td>
 								<td class='tableitem'><p class='itemtext'>$pro_title $pro_desc</p></td>
 								<td class='tableitem'><p class='itemtext' style='text-align: center;'>$qty</p></td>
 								<td class='tableitem'><p class='itemtext'>Cancelled</p></td>
